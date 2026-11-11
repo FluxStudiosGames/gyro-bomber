@@ -57,7 +57,8 @@ function toggleMute(){ muted = !muted; try { localStorage.setItem('gb_mute', mut
 bMute.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); toggleMute(); });
 bMute.addEventListener('touchend', e => { e.preventDefault(); e.stopPropagation(); toggleMute(); });
 const bFS = document.getElementById('bFS');
-const canFS = !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
+const isIPhone = /iPhone/i.test(navigator.userAgent || '');
+const canFS = !isIPhone && !!(document.documentElement.requestFullscreen || document.documentElement.webkitRequestFullscreen);
 if (!canFS) bFS.style.display = 'none';
 function toggleFS(){
   const d = document;
